@@ -1,3 +1,5 @@
+// Speech Recognition Module
+
 const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
 const SpeechRecognitionEvent = window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
@@ -24,12 +26,13 @@ micBtn.addEventListener('click', () => {
 });
 
 sendBtn.addEventListener('click', async () => {
-    const response = await fetch(encodeURI(`http://localhost:3000/api/v1/answer?q=${queryInput.value}`));
+    const response = await fetch(encodeURI(`https://kisan-assist.herokuapp.com/api/v1/answer?q=${queryInput.value}`));
     const json = await response.json();
     replyTxt.innerHTML = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>Answer: </strong>${json.message}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>`;
+    speak(json.message);
 });
 
 recognition.onresult = (event) => {
@@ -37,6 +40,11 @@ recognition.onresult = (event) => {
     queryMetaData.innerHTML = `Confidence: ${Math.round(event.results[0][0].confidence * 100)}%`;
 }
 
+// Text to Speech
 
+const synthesis = window.speechSynthesis;
 
-
+speak = (textToSpeak) => {
+    const textToSpeak = new SpeechSynthesisUtterance();
+    synthesis.speak(textToSpeak);
+}
