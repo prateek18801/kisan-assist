@@ -42,9 +42,27 @@ recognition.onresult = (event) => {
 
 // Text to Speech
 
-const synthesis = window.speechSynthesis;
+const synth = window.speechSynthesis;
+let voices = [];
+function populateVoiceList() {
+    voices = synth.getVoices();
+}
 
-speak = (textToSpeak) => {
-    const textToSpeak = new SpeechSynthesisUtterance();
-    synthesis.speak(textToSpeak);
+populateVoiceList();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
+const speak = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.voice = voices[0];
+    utterance.pitch = 1;
+    utterance.rate = 1;
+    synth.speak(utterance);
+}
+
+// Google Translate for webpage
+
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
 }
