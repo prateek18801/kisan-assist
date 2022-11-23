@@ -73,9 +73,3 @@ const speak = (text) => {
     utterance.volume = 1;
     synth.speak(utterance);
 }
-
-// Google Translate for webpage
-
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-}
