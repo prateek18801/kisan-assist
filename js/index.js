@@ -54,10 +54,23 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
 }
 
 const speak = (text) => {
+    if (synth.speaking) {
+        console.error("speechSynthesis.speaking");
+        return;
+    }
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.voice = voices[0];
+
+    utterance.onend = function (event) {
+        console.log("SpeechSynthesisUtterance.onend");
+    };
+
+    utterance.onerror = function (event) {
+        console.error("SpeechSynthesisUtterance.onerror");
+    };
+    utterance.voice = voices[12];
     utterance.pitch = 1;
     utterance.rate = 1;
+    utterance.volume = 1;
     synth.speak(utterance);
 }
 
