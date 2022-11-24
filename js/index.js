@@ -36,9 +36,8 @@ sendBtn.addEventListener('click', async () => {
                             <strong>Answer: </strong><div id="query-ans">${json.message}</div>
                         </div>
                         <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" id="speak-btn" onclick="readAloud()">
-                            <i class="material-icons">volume_up</i>
+                            <i class="notranslate material-icons" >volume_up</i>
                         </button>`;
-    speak(json.message);
 });
 
 function readAloud() {
