@@ -29,7 +29,7 @@ sendBtn.addEventListener('click', async () => {
         document.getElementById('p2').classList.remove('d-none');
     const lang = document.getElementsByClassName('goog-te-combo')[0].value;
     if(!updated) return;
-    const response = await fetch(encodeURI(`http://localhost:3000/api/v1/answer?q=${queryInput.innerText}`));
+    const response = await fetch(encodeURI(`https://kisan-assist.herokuapp.com/api/v1/answer?q=${queryInput.innerText}`));
     const json = await response.json();
     console.log(json);
     replyTxt.innerHTML = `<div style="padding: 1rem; background-color: rgb(141, 255, 156); border-radius: 1rem 1rem 0 1rem;">
