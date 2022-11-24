@@ -33,17 +33,13 @@ sendBtn.addEventListener('click', async () => {
     const json = await response.json();
     console.log(json);
     replyTxt.innerHTML = `<div style="padding: 1rem; background-color: rgb(141, 255, 156); border-radius: 1rem 1rem 0 1rem;">
-                            <strong>Answer: </strong><div id="query-ans">${json.message}</div>
+                            <strong>Answer: </strong>${json.message}
                         </div>
-                        <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" id="speak-btn">
+                        <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
                             <i class="material-icons">volume_up</i>
                         </button>`;
     speak(json.message);
 });
-
-document.getElementById('speak-btn').addEventListener('click', ()=> {
-    speak(document.getElementById('query-ans').innerText);
-})
 
 deleteBtn.addEventListener('click', () => {
     queryInput.innerHTML = '';
@@ -105,3 +101,5 @@ const speak = (text) => {
     utterance.volume = 1;
     synth.speak(utterance);
 }
+
+// Langage Conversion
