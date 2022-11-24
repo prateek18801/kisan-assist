@@ -38,6 +38,7 @@ sendBtn.addEventListener('click', async () => {
                         <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" id="speak-btn" onclick="readAloud()">
                             <i class="notranslate material-icons" >volume_up</i>
                         </button>`;
+    speak(json.message);
 });
 
 function readAloud() {
@@ -92,6 +93,9 @@ const speak = (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
 
     utterance.onend = function (event) {
+        setTimeout(()=>{
+            queryInput.innerHTML = '';
+        }, 1000);
         console.log("SpeechSynthesisUtterance.onend");
     };
 
