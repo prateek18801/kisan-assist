@@ -1,12 +1,12 @@
 .Navbar__logo {
+    margin: 1rem 0;
     display: flex;
     align-items: center;
-    margin: 1rem 0;
 }
 
 .Navbar__logo>span {
-    font-family: 'Montserrat', sans-serif;
     font-size: 1.3rem;
+    font-family: var(--secondary-font);
 }
 
 .Navbar__logo>img {
