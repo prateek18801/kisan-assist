@@ -1,0 +1,10 @@
+.Status {
+    width: 85%;
+    margin: 1rem 0;
+}
+
+.Status>span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--secondary-font);
+}
