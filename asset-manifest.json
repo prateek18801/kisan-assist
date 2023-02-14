@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/kisan-assist/static/css/main.b1a33f4f.css",
-    "main.js": "/kisan-assist/static/js/main.693c7355.js",
+    "main.css": "/kisan-assist/static/css/main.86821b95.css",
+    "main.js": "/kisan-assist/static/js/main.e0472bef.js",
+    "static/media/logo.png": "/kisan-assist/static/media/logo.cb3f27ed7d702f951042.png",
     "index.html": "/kisan-assist/index.html",
-    "main.b1a33f4f.css.map": "/kisan-assist/static/css/main.b1a33f4f.css.map",
-    "main.693c7355.js.map": "/kisan-assist/static/js/main.693c7355.js.map"
+    "main.86821b95.css.map": "/kisan-assist/static/css/main.86821b95.css.map",
+    "main.e0472bef.js.map": "/kisan-assist/static/js/main.e0472bef.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1a33f4f.css",
-    "static/js/main.693c7355.js"
+    "static/css/main.86821b95.css",
+    "static/js/main.e0472bef.js"
   ]
 }
