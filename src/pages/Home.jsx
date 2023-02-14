@@ -1,4 +1,5 @@
 import Navbar from '../components/Navbar';
+import Status from '../components/Status';
 import SearchBar from '../components/SearchBar';
 import Microphone from '../components/Microphone';
 
@@ -9,6 +10,7 @@ const Home = () => {
         <div className='Home'>
             <Navbar />
             <SearchBar />
+            <Status />
             <Microphone />
         </div>
     );
