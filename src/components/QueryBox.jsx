@@ -1,21 +1,22 @@
+import { useEffect, useRef } from 'react';
 import './QueryBox.css';
 
 const QueryContainer = ({ status, query, setQuery }) => {
 
-    const handleHeight = (event) => {
-        event.target.style.height = 'inherit';
-        event.target.style.height = `${Math.min(event.target.scrollHeight, 200)}px`;
-    }
+    const ref = useRef(null);
+
+    useEffect(() => {
+        ref.current.style.height = 'inherit';
+        ref.current.style.height = `${Math.min(ref.current.scrollHeight, 200)}px`;
+    }, [query]);
 
     return (
         <div className="QueryBox">
             <textarea
+                ref={ref}
                 value={query}
-                onChange={e => {
-                    setQuery(e.target.value);
-                    handleHeight(e);
-                }}
                 disabled={status === 1}
+                onChange={e => { setQuery(e.target.value); }}
                 placeholder={status === 1 ? 'Speak your query' : 'Type your query'}
             />
         </div>
