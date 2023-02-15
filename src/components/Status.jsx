@@ -1,9 +1,12 @@
 import './Status.css';
 
-const Status = () => {
-    return(
+const Status = ({ status }) => {
+
+    const STATUS_VALUES = ['Idle', 'Listening', 'Processing', 'Answer'];
+
+    return (
         <div className="Status">
-            <span>Listening...</span>
+            <span>{STATUS_VALUES[status]}</span>
         </div>
     );
 }
