@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import Navbar from '../components/Navbar';
 import Status from '../components/Status';
+import QueryBox from '../components/QueryBox';
 import SearchBar from '../components/SearchBar';
 import Microphone from '../components/Microphone';
 
@@ -17,6 +18,7 @@ const Home = () => {
             <Navbar />
             <SearchBar />
             <Status status={status} />
+            <QueryBox status={status} query={query} setQuery={setQuery} />
             <Microphone status={status} setStatus={setStatus} />
         </div>
     );
