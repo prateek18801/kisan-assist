@@ -18,7 +18,16 @@
     font-family: var(--primary-font);
 }
 
-.SearchBar>span {
+.SearchBar>button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    height: 100%;
+    padding: 0 0.2rem;
+}
+
+.SearchBar>button>span {
     font-weight: 600;
     color: var(--primary-color);
 }
