@@ -1,9 +1,9 @@
 import './AnswerBox.css';
 
-const AnswerBox = ({ answer }) => {
+const AnswerBox = ({ response }) => {
     return (
         <div className="AnswerBox">
-            <div>{answer}</div>
+            <div>Testing: {JSON.stringify(response)}</div>
         </div>
     );
 }
