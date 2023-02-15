@@ -1,0 +1,14 @@
+.QueryBox {
+    width: 85%;
+}
+
+.QueryBox>textarea {
+    width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-family: var(--primary-font);
+    background-color: var(--background-color);
+}
