@@ -1,12 +1,12 @@
 import './Status.css';
 
-const Status = ({ status }) => {
+const Status = ({ applicationState }) => {
 
-    const STATUS_VALUES = ['Idle', 'Listening', 'Processing', 'Answer'];
+    const APPLICATION_STATE_VALUES = ['Idle', 'Listening', 'Processing', 'Answer'];
 
     return (
         <div className="Status">
-            <span>{STATUS_VALUES[status]}</span>
+            <span>{APPLICATION_STATE_VALUES[applicationState]}</span>
         </div>
     );
 }
