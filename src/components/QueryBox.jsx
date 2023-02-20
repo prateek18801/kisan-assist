@@ -1,24 +1,35 @@
 import { useEffect, useRef } from 'react';
 import './QueryBox.css';
 
-const QueryContainer = ({ status, query, setQuery }) => {
+const QueryContainer = ({ queryText, setQueryText, resetTranscript, applicationState, setApplicationState }) => {
 
-    const ref = useRef(null);
+    const textareaRef = useRef(null);
 
     useEffect(() => {
-        ref.current.style.height = 'inherit';
-        ref.current.style.height = `${Math.min(ref.current.scrollHeight, 200)}px`;
-    }, [query]);
+        textareaRef.current.style.height = 'inherit';
+        textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 200)}px`;
+    }, [queryText]);
+
+
+    const clearQueryContainer = () => {
+        setQueryText('');
+        resetTranscript();
+        setApplicationState(0);
+    }
 
     return (
-        <div className="QueryBox">
+        <div className='QueryBox'>
             <textarea
-                ref={ref}
-                value={query}
-                disabled={status === 1}
-                onChange={e => { setQuery(e.target.value); }}
-                placeholder={status === 1 ? 'Speak your query' : 'Type your query'}
+                ref={textareaRef}
+                value={queryText}
+                disabled={applicationState === 1}
+                onChange={e => { setQueryText(e.target.value); }}
+                style={{ fontSize: applicationState === 3 ? '0.8rem' : '1rem' }}
+                placeholder={applicationState === 1 ? 'Speak your query' : 'Type your query'}
             />
+            {queryText !== '' && <button onClick={() => clearQueryContainer()}>
+                <span className='material-symbols-rounded'>close</span>
+            </button>}
         </div>
     );
 }
