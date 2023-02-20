@@ -29,7 +29,7 @@ const useFetch = (url, initial) => {
 
     }, [url]);
 
-    return { response, loading, error };
+    return { response, loading, error, setResponse };
 }
 
 export default useFetch;
