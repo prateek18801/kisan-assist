@@ -14,24 +14,35 @@ import './Home.css';
 const Home = () => {
 
     const [url, setUrl] = useState('');
-    const [query, setQuery] = useState('');
-    const [status, setStatus] = useState(0);
-    const { response, loading, error } = useFetch(url);
+    const [queryText, setQueryText] = useState('');
+    const [applicationState, setApplicationState] = useState(0);
 
-    const { transcript, isMicrophoneAvailable, browserSupportsSpeechRecognition } = useSpeechRecognition();
+    const { response, loading, error, setResponse } = useFetch(url);
+
+    const { transcript, isMicrophoneAvailable, browserSupportsSpeechRecognition, resetTranscript } = useSpeechRecognition();
 
     useEffect(() => {
-        if (status === 1) {
-            SpeechRecognition.startListening({ continuous: true });
-        } else if (status === 2) {
-            SpeechRecognition.stopListening();
-            // Testing
-            setUrl('https://jsonplaceholder.typicode.com/todos')
+        switch (applicationState) {
+            case 0:
+                setUrl('');
+                setResponse('');
+                SpeechRecognition.stopListening();
+                break;
+            case 1:
+                SpeechRecognition.startListening({ continuous: true });
+                break;
+            case 2:
+                setUrl(encodeURI(`${process.env.REACT_APP_API_BASE_URL}/api/v1/answer?q=${queryText}`));
+                break;
+            case 3:
+                break;
+            default:
+                break;
         }
-    }, [status]);
+    }, [applicationState, queryText, setResponse]);
 
     useEffect(() => {
-        if (!loading) setStatus(current => current === 2 ? 3 : current);
+        if (!loading) setApplicationState(current => current === 2 ? 3 : current);
     }, [loading]);
 
     useEffect(() => {
@@ -39,23 +50,25 @@ const Home = () => {
     }, [error]);
 
     useEffect(() => {
-        setQuery(transcript);
+        setQueryText(transcript);
     }, [transcript]);
 
     return (
         <div className='Home'>
             <Navbar />
             <SearchBar />
-            <Status status={status} />
+            <Status applicationState={applicationState} />
             <QueryBox
-                query={query}
-                status={status}
-                setQuery={setQuery}
+                queryText={queryText}
+                setQueryText={setQueryText}
+                resetTranscript={resetTranscript}
+                applicationState={applicationState}
+                setApplicationState={setApplicationState}
             />
             <AnswerBox response={response} />
             <Microphone
-                status={status}
-                setStatus={setStatus}
+                applicationState={applicationState}
+                setApplicationState={setApplicationState}
                 isMicrophoneAvailable={isMicrophoneAvailable}
                 browserSupportsSpeechRecognition={browserSupportsSpeechRecognition}
             />
