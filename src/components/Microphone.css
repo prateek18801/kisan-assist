@@ -1,0 +1,21 @@
+.Microphone {
+    position: absolute;
+    bottom: 2rem;
+}
+
+.Microphone>button {
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.3rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    box-shadow: 0px 0px 20px 0px #e7e7e7;
+}
+
+.Microphone>button>span {
+    font-size: 2rem;
+    color: var(--highlight-color);
+}
