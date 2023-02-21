@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
@@ -36,7 +36,7 @@ const Home = () => {
         }
     }
 
-    const speakAnswer = () => { speak({ text: answer }); }
+    const speakAnswer = useCallback(() => { speak({ text: answer }); }, [answer]);
 
     useEffect(() => {
         switch (applicationState) {
@@ -49,12 +49,12 @@ const Home = () => {
             case 2:
                 break;
             case 3:
-                speak({ text: answer });
+                speakAnswer(answer);
                 break;
             default:
                 break;
         }
-    }, [applicationState, speak, answer]);
+    }, [applicationState, speakAnswer, answer]);
 
     useEffect(() => { setQueryText(transcript); }, [transcript]);
 
