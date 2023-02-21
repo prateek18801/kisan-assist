@@ -1,9 +1,9 @@
 import './AnswerBox.css';
 
-const AnswerBox = ({ response }) => {
+const AnswerBox = ({ answer }) => {
     return (
         <div className="AnswerBox">
-            <div>{response?.message}</div>
+            <div>{answer}</div>
         </div>
     );
 }
