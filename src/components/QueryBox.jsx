@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import './QueryBox.css';
 
-const QueryContainer = ({ queryText, setQueryText, resetTranscript, applicationState, setApplicationState }) => {
+const QueryContainer = ({ queryText, setAnswer, setQueryText, resetTranscript, applicationState, setApplicationState }) => {
 
     const textareaRef = useRef(null);
 
@@ -12,6 +12,7 @@ const QueryContainer = ({ queryText, setQueryText, resetTranscript, applicationS
 
 
     const clearQueryContainer = () => {
+        setAnswer('');
         setQueryText('');
         resetTranscript();
         setApplicationState(0);
@@ -28,7 +29,7 @@ const QueryContainer = ({ queryText, setQueryText, resetTranscript, applicationS
                 placeholder={applicationState === 1 ? 'Speak your query' : 'Type your query'}
             />
             {queryText !== '' && <button onClick={() => clearQueryContainer()}>
-                <span className='material-symbols-rounded'>close</span>
+                <span className='material-symbols-rounded notranslate'>close</span>
             </button>}
         </div>
     );
