@@ -3,7 +3,7 @@ import './Navbar.css';
 
 const Navbar = () => {
     return (
-        <div className='Navbar'>
+        <div className='Navbar notranslate'>
             <div className='Navbar__logo'>
                 <span>Kisan</span>
                 <img src={logo} alt='Kisan Assist' />
